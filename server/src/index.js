@@ -10,11 +10,12 @@ app.use(express.json());
 app.use(cors());
 app.use(body_parser.urlencoded ({extended: false}));
 
-
+app.use('/', require("./controller/company.controller"));
+app.use('/', require("./controller/compdetail.controller"));
 
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, ()=>{
-    connectdb.authenticate().then(() => {
+    connectdb.sequalize.authenticate().then(() => {
         console.log('Yep! you connected to database');
     }).catch(err => {
         console.error('Sorry! unable to connect', err);
