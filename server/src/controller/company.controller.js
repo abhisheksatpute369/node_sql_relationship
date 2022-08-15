@@ -21,11 +21,11 @@ Router.get('/', (req, res) => {
 });
 
 //route for get perticular company data
-Router.get('/:comp_id', (req, res) => {
+Router.get('/:id', (req, res) => {
     // var id = req.params.comp_id
     Company.findAll({
         where:{
-            comp_id:req.params.comp_id
+            comp_id:req.params.id
         },
         include:[{
             model:Compdetails,

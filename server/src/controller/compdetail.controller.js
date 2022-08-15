@@ -14,20 +14,20 @@ Router.post('/addcompdetail', (req, res) => {
 });
 
 //route for get all company details
-Router.get('/compdetail', (req, res) => {
-    Compdetails.findAll({
-         include:[{
-                model:Company,
-                attributes:['comp_id','comp_name' , 'email','origin']
-         }]
-    }).then(compdetail => {
-        res.send(compdetail);
-    }
-    ).catch(err => {
-        res.send(err);
-    }
-    );
-}
-);
+// Router.get('/compdetail', (req, res) => {
+//     Compdetails.findAll({
+//          include:[{
+//                 model:Company,
+//                 attributes:['comp_id','comp_name' , 'email','origin']
+//          }]
+//     }).then(compdetail => {
+//         res.send(compdetail);
+//     }
+//     ).catch(err => {
+//         res.send(err);
+//     }
+//     );
+// }
+// );
  
 module.exports = Router;
