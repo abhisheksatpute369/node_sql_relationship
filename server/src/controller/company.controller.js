@@ -7,10 +7,10 @@ const {Company  , Compdetails} = require("../config/db");
 //route for get company data
 Router.get('/', (req, res) => {
     Company.findAll({
-        include:[{
-            model:Compdetails,
-            attributes:['compdetail_id' , 'ceo_name','manager','headquarter','employee_num']
-     }]
+    //     include:[{
+    //         model:Compdetails,
+    //         attributes:['compdetail_id' , 'ceo_name','manager','headquarter','employee_num']
+    //  }]
     }).then(Companys => {
         res.send(Companys);
     }
