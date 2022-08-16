@@ -9,15 +9,15 @@ const Company = () => {
 
       // for getting all company data 
       const getdata = async () =>{
-        var result = await fetch("http://localhost:3030/");
+        var result = await fetch("http://localhost:3030/company");
         var res = await result.json();
-        setcompany([...res]);
-        console.log(company);
+        setcompany(res);
+        
     }
 
     const handleview = (id)=> {
-        Navigate(`/${id}`)
-        console.log("view");
+        console.log(id);
+        Navigate(`company/${id}`)
     }
 
     useEffect(()=>{
@@ -45,7 +45,7 @@ const Company = () => {
                                 <td>{ele?.comp_name}</td>
                                 <td>{ele?.email}</td>
                                 <td>{ele?.origin}</td>
-                                <td onClick={()=>handleview(ele?.id)} style={{cursor:'pointer'}}>View</td>
+                                <td onClick={()=>handleview(ele.comp_id)} style={{cursor:'pointer'}}>View</td>
                             </tr>
                         )
                     })

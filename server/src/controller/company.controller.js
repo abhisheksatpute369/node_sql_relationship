@@ -1,16 +1,28 @@
 const express = require('express');
 
 const Router = express.Router();
-const {Company  , Compdetails} = require("../config/db");
+const { Company, Compdetails } = require("../config/db");
 
+Router.get('/company/:id', (req, res) => {
+    // var id = req.params.comp_id
+    Company.findByPk(+req.params.id, {
+        include: [{ model: Compdetails }]
+    }).then(Companys => {
+        res.send(Companys);
+    }
+    ).catch(err => {
+        res.send(err);
+    }
+    );
+});
 
 //route for get company data
-Router.get('/', (req, res) => {
+Router.get('/company', (req, res) => {
     Company.findAll({
-    //     include:[{
-    //         model:Compdetails,
-    //         attributes:['compdetail_id' , 'ceo_name','manager','headquarter','employee_num']
-    //  }]
+        //     include:[{
+        //         model:Compdetails,
+        //         attributes:['compdetail_id' , 'ceo_name','manager','headquarter','employee_num']
+        //  }]
     }).then(Companys => {
         res.send(Companys);
     }
@@ -21,24 +33,7 @@ Router.get('/', (req, res) => {
 });
 
 //route for get perticular company data
-Router.get('/:id', (req, res) => {
-    // var id = req.params.comp_id
-    Company.findAll({
-        where:{
-            comp_id:req.params.id
-        },
-        include:[{
-            model:Compdetails,
-            attributes:['compdetail_id' , 'ceo_name','manager','headquarter','employee_num']
-     }]
-    }).then(Companys => {
-        res.send(Companys);
-    }
-    ).catch(err => {
-        res.send(err);
-    }
-    );
-});
+
 
 // route for post the company data 
 Router.post('/addcompany', (req, res) => {
@@ -49,5 +44,5 @@ Router.post('/addcompany', (req, res) => {
     })
 
 });
- 
+
 module.exports = Router;
