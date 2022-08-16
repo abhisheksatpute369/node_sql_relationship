@@ -26,6 +26,9 @@ db.Compdetails.belongsTo(db.Company, {foreignKey: 'comp_id'});
 db.Company.hasMany(db.Vehicle, {foreignKey: 'comp_id'});
 db.Vehicle.belongsTo(db.Company, {foreignKey: 'comp_id'});
 
+//many to many relationship
+// db.
+
 db.sequalize.sync({force:false}).then(() => {
     console.log(`synchronized to data base`);
   });
