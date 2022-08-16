@@ -12,6 +12,7 @@ app.use(body_parser.urlencoded ({extended: false}));
 
 app.use('/', require("./controller/company.controller"));
 app.use('/', require("./controller/compdetail.controller"));
+app.use('/', require("./controller/vehicle.controller"));
 
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, ()=>{
