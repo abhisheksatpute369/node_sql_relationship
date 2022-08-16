@@ -10,9 +10,11 @@ app.use(express.json());
 app.use(cors());
 app.use(body_parser.urlencoded ({extended: false}));
 
+// all routes write here 
 app.use('/', require("./controller/company.controller"));
 app.use('/', require("./controller/compdetail.controller"));
 app.use('/', require("./controller/vehicle.controller"));
+app.use('/', require("./controller/dealer.controler"));
 
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, ()=>{
