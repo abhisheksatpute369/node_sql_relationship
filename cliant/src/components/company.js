@@ -20,6 +20,11 @@ const Company = () => {
         Navigate(`company/${id}`)
     }
 
+    const bikelist = (id) => {
+        console.log(id);
+        Navigate(`bikes/${id}`)
+    }
+
     useEffect(()=>{
         getdata();
     },[]);
@@ -33,7 +38,7 @@ const Company = () => {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Origin</th>
-                        <th>Action</th>
+                        <th colSpan={2}>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +51,7 @@ const Company = () => {
                                 <td>{ele?.email}</td>
                                 <td>{ele?.origin}</td>
                                 <td onClick={()=>handleview(ele.comp_id)} style={{cursor:'pointer'}}>View</td>
+                                <td onClick={()=>bikelist(ele.comp_id)} style={{cursor:'pointer'}}>Bikes</td>
                             </tr>
                         )
                     })

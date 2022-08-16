@@ -28,5 +28,20 @@ Router.get('/vehicle', (req, res) => {
     }
     );
 });
+
+// route for get vehicle by company id for getting vehicles of perticular company
+Router.get('/vehicle/:id', (req, res) => {
+    Vehicle.findAll({
+        where: {
+            comp_id: req.params.id
+        }
+    }).then(vehicle => {
+        res.send(vehicle);
+    }
+    ).catch(err => {
+        res.send(err);
+    }
+    );
+});
  
 module.exports = Router;
