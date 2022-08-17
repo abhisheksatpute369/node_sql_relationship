@@ -11,9 +11,9 @@ app.use(cors());
 app.use(body_parser.urlencoded ({extended: false}));
 
 // all routes write here 
+app.use('/', require("./controller/vehicle.controller"));
 app.use('/', require("./controller/company.controller"));
 app.use('/', require("./controller/compdetail.controller"));
-app.use('/', require("./controller/vehicle.controller"));
 app.use('/', require("./controller/dealer.controler"));
 app.use('/', require("./controller/deals.controller"));
 

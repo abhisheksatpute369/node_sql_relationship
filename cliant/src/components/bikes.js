@@ -1,10 +1,11 @@
 import React, {useState,useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams , useNavigate, Navigate} from 'react-router-dom';
 
 const Bikes = () => {
 
     const [bikes, setbikes] = useState([]);
     const {id} = useParams()
+    const Navigate = useNavigate();
 
     const getsingle = async ()=>{
         var data = await fetch(`http://localhost:3030/vehicle/${id}`);
@@ -12,8 +13,8 @@ const Bikes = () => {
         setbikes(result);
     }
 
-    const getalldealers = () => {
-
+    const getalldealers = (id) => {
+        // Navigate('/dealers/:id')
     }
 
     useEffect(()=>{

@@ -16,12 +16,10 @@ const Company = () => {
     }
 
     const handleview = (id)=> {
-        console.log(id);
         Navigate(`company/${id}`)
     }
 
     const bikelist = (id) => {
-        console.log(id);
         Navigate(`bikes/${id}`)
     }
 

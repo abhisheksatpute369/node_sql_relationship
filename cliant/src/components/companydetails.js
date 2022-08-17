@@ -11,7 +11,6 @@ const Companydetails = () => {
         var data = await fetch(`http://localhost:3030/company/${id}`);
         var result = await (data.json());
         setdetails(result);
-        console.log(details.ceo);
     }
 
     useEffect(()=>{
