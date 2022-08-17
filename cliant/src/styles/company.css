@@ -103,6 +103,9 @@ table{
 #dealerstable{
     visibility: hidden;
 }
+#bikestable{
+    visibility: hidden;
+}
 
 #vtitle{
     display: flex;
