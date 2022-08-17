@@ -29,6 +29,25 @@ Router.get('/dealer', (req, res) => {
     );
 });
 
+//route for get dealers data
+Router.get('/vehicles/:id', (req, res) => {
+    Dealer.findAll({
+        where:{
+            d_id : req.params.id
+        },
+        include:[{
+            model:Vehicle,
+            // attributes:['compdetail_id' , 'ceo_name','manager','headquarter','employee_num']
+     }]
+    }).then(vehicle => {
+        res.send(vehicle);
+    }
+    ).catch(err => {
+        res.send(err);
+    }
+    );
+});
+
 
  
 module.exports = Router;
