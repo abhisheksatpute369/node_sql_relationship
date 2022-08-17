@@ -99,11 +99,21 @@ table{
     cursor: pointer;
 }
 
+#maindata{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+}
 /* style for dealers table hide  */
 #dealerstable{
+    display: block;
+    width: 50%;
     visibility: hidden;
 }
 #bikestable{
+    display: block;
+    width: 50%;
     visibility: hidden;
 }
 
