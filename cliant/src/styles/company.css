@@ -98,3 +98,17 @@ table{
     background-color: white;
     cursor: pointer;
 }
+
+/* style for dealers table hide  */
+#dealerstable{
+    visibility: hidden;
+}
+
+#vtitle{
+    display: flex;
+    margin-top: 50px;
+    line-height: 0;
+    margin-left: 42%;
+    color: brown;
+    font-size: 25px;
+}

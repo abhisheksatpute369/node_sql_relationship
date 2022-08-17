@@ -44,7 +44,7 @@ Router.get('/vehicle/:id', (req, res) => {
     );
 });
 
-//route for get dealers data from vehicle table
+//route for get dealers data from vehicle table for that perticular vehicle
 Router.get('/dealer/:id', (req, res) => {
     Vehicle.findAll({
         where:{
