@@ -30,10 +30,10 @@ const Companydetails = () => {
                     <p className='titles'>Workers</p>
                 </div>
                 <div id="info">
-                    <p className='titles'>{details?.compdetail?.ceo_name}</p>
-                    <p className='titles'>{details?.compdetail?.manager}</p>
-                    <p className='titles'>{details?.compdetail?.headquarter}</p>
-                    <p className='titles'>{details?.compdetail?.employee_num}</p>
+                    <p className='titles'>{details?.compdetail?.ceo_name || "name"}</p>
+                    <p className='titles'>{details?.compdetail?.manager || "name"}</p>
+                    <p className='titles'>{details?.compdetail?.headquarter || "city name"}</p>
+                    <p className='titles'>{details?.compdetail?.employee_num || "number"}</p>
                 </div>
             </div>
         </div>

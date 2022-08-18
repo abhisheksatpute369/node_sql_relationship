@@ -43,13 +43,13 @@ const Company = () => {
                 {
                     company.map((ele)=>{
                         return(
-                            <tr key={ele?.comp_id} id="rows">
-                                <td>{ele?.comp_id}</td>
-                                <td>{ele?.comp_name}</td>
-                                <td>{ele?.email}</td>
-                                <td>{ele?.origin}</td>
-                                <td onClick={()=>handleview(ele.comp_id)} style={{cursor:'pointer'}}>View</td>
-                                <td onClick={()=>bikelist(ele.comp_id)} style={{cursor:'pointer'}}>Bikes</td>
+                            <tr key={ele?.comp_id || " "} id="rows">
+                                <td>{ele?.comp_id || " "}</td>
+                                <td>{ele?.comp_name || " "}</td>
+                                <td>{ele?.email || " "}</td>
+                                <td>{ele?.origin || " "}</td>
+                                <td onClick={()=>handleview(ele?.comp_id)} style={{cursor:'pointer'}}>View</td>
+                                <td onClick={()=>bikelist(ele?.comp_id)} style={{cursor:'pointer'}}>Bikes</td>
                             </tr>
                         )
                     })

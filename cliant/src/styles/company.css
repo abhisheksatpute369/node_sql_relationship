@@ -111,10 +111,18 @@ table{
     width: 50%;
     visibility: hidden;
 }
+
+#dealerstable > table{
+    width: 80%
+}
+
 #bikestable{
     display: block;
     width: 50%;
     visibility: hidden;
+}
+#bikestable > table{
+    width: 80%;
 }
 
 #vtitle{

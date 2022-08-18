@@ -61,10 +61,10 @@ const Bikes = () => {
                     bikes.map((ele)=>{
                         return(
                             <tr key={ele?.v_id} id="rows">
-                                <td>{ele?.v_id}</td>
-                                <td>{ele?.v_name}</td>
-                                <td>{ele?.v_milage}</td>
-                                <td>{ele?.v_launchyear}</td>
+                                <td>{ele?.v_id || " "}</td>
+                                <td>{ele?.v_name || " "}</td>
+                                <td>{ele?.v_milage || " "}</td>
+                                <td>{ele?.v_launchyear || " "}</td>
                                 <td onClick={()=>getalldealers(ele.v_id, ele?.v_name)} style={{cursor:'pointer'}}>Dealers</td>
                             </tr>
                         )
@@ -92,12 +92,12 @@ const Bikes = () => {
                     {
                         dealers.map((ele)=>{
                             return(
-                                <tr key={ele?.d_id} id="rows">
-                                    <td>{ele?.d_id}</td>
-                                    <td>{ele?.d_name}</td>
-                                    <td>{ele?.d_phone}</td>
-                                    <td>{ele?.d_email}</td>
-                                    <td>{ele?.d_address}</td>
+                                <tr key={ele?.d_id || " "} id="rows">
+                                    <td>{ele?.d_id || " "}</td>
+                                    <td>{ele?.d_name || " "}</td>
+                                    <td>{ele?.d_phone || " "}</td>
+                                    <td>{ele?.d_email || " "}</td>
+                                    <td>{ele?.d_address || " "}</td>
                                     <td onClick={()=>getallvehicle(ele?.d_id, ele?.d_name)} style={{cursor:'pointer'}}>Bikes</td>
                                 </tr>
                             )
@@ -124,11 +124,11 @@ const Bikes = () => {
                     {
                         vehicles.map((ele)=>{
                             return(
-                                <tr key={ele?.v_id} id="rows">
-                                    <td>{ele?.v_id}</td>
-                                    <td>{ele?.v_name}</td>
-                                    <td>{ele?.v_milage}</td>
-                                    <td>{ele?.v_launchyear}</td>
+                                <tr key={ele?.v_id || " "} id="rows">
+                                    <td>{ele?.v_id || " "}</td>
+                                    <td>{ele?.v_name || " "}</td>
+                                    <td>{ele?.v_milage || " "}</td>
+                                    <td>{ele?.v_launchyear || " "}</td>
                                     {/* <td>{ele?.v_address}</td> */}
                                     {/* <td onClick={()=>getallvehicle(ele.v_id)} style={{cursor:'pointer'}}>Dealers</td> */}
                                 </tr>
