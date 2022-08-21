@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom';
 import "../styles/company.css"
 
 const Company = () => {
@@ -56,6 +56,9 @@ const Company = () => {
                 }
                 </tbody>
             </table>
+            <Link to="/allbikes">
+            <button id="bkbutton">All Bikes</button>
+            </Link>
         </div>
     );
 };

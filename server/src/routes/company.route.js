@@ -8,7 +8,7 @@ const router = express.Router()
 
     router.get("/company/:id", companyController.getcompanybyid)
 
-   router.get("/companyp" , companyController.comapnypaginate)
+   router.get("/companyp" , companyController.comapnypaginate) //these route for pagination
 
 
 module.exports = router

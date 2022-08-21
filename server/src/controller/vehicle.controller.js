@@ -30,6 +30,20 @@ const getvehicle = (req, res) =>{
     );
 }
 
+// function for get vehicle with pagination 
+const allvehicle = (req, res) => {
+    let limit = req.query.limit || 5;
+    let offset = limit * (req.query.page - 1)||0;
+    Vehicle.findAndCountAll({
+        limit: limit,
+        offset: offset
+    }).then(data => {
+        res.send(data);
+    }).catch(err => {
+        res.send(err);
+    });
+}
+
 // route for get vehicle by company id for getting vehicles of perticular company
 
 const getvehiclebyid = (req,res) =>{
@@ -66,4 +80,4 @@ const getdealerbyvehicleid = (req, res)=>{
     );
 }
  
-module.exports = {postvehicle, getvehicle, getvehiclebyid, getdealerbyvehicleid};
+module.exports = {postvehicle, getvehicle,allvehicle, getvehiclebyid, getdealerbyvehicleid};//all vehicle for pagination

@@ -6,6 +6,8 @@ const router = express.Router()
 
     router.get("/vehicle", vehicleController.getvehicle )
 
+    router.get("/allvehicle", vehicleController.allvehicle)
+
     router.get("/vehicle/:id", vehicleController.getvehiclebyid)
 
     router.get("/dealer/:id", vehicleController.getdealerbyvehicleid)

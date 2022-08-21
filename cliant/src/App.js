@@ -3,6 +3,7 @@ import './App.css';
 import Company from './components/company';
 import Companydetails from './components/companydetails';
 import Bikes from './components/bikes';
+import Allbikes  from './components/allbikes';
 // import Dealer from './components/dealer';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Company />} />
         <Route path='company/:id' element={<Companydetails />} />
         <Route path='bikes/:id' element= {<Bikes />} />
+        <Route path='/allbikes' element= {<Allbikes />} />
         {/* <Route path='dealer/:id' element= {<Dealer />} /> */}
       </Routes>
     </BrowserRouter>
