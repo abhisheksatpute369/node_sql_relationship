@@ -1,17 +1,14 @@
-const express = require('express');
 
-const Router = express.Router();
 const {Company  , Compdetails} = require("../config/db");
 
 // route for post the company data 
-Router.post('/addcompdetail', (req, res) => {
+const postcommdetails = () =>{
     Compdetails.create(req.body).then(Compdetails => {
         res.send(Compdetails);
     }).catch(err => {
         res.send(err);
     })
-
-});
+}
 
 //route for get all company details
 // Router.get('/compdetail', (req, res) => {
@@ -30,4 +27,4 @@ Router.post('/addcompdetail', (req, res) => {
 // }
 // );
  
-module.exports = Router;
+module.exports = {postcommdetails};

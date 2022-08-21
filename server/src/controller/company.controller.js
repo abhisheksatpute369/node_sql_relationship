@@ -1,10 +1,8 @@
-const express = require('express');
 
-const Router = express.Router();
 const { Company, Compdetails } = require("../config/db");
 
-Router.get('/company/:id', (req, res) => {
-    // var id = req.params.comp_id
+
+const getcompanybyid = (req, res) => {
     Company.findByPk(+req.params.id, {
         include: [{ model: Compdetails }]
     }).then(Companys => {
@@ -14,10 +12,11 @@ Router.get('/company/:id', (req, res) => {
         res.send(err);
     }
     );
-});
+}
 
 //route for get company data
-Router.get('/company', (req, res) => {
+
+const getallcompany = (req, res) => {
     Company.findAll({
         //     include:[{
         //         model:Compdetails,
@@ -30,19 +29,19 @@ Router.get('/company', (req, res) => {
         res.send(err);
     }
     );
-});
+}
 
 //route for get perticular company data
 
 
 // route for post the company data 
-Router.post('/addcompany', (req, res) => {
+
+const postcompany = (req, res) =>{
     Company.create(req.body).then(Company => {
         res.send(Company);
     }).catch(err => {
         res.send(err);
     })
+}
+module.exports = {postcompany, getallcompany, getcompanybyid};
 
-});
-
-module.exports = Router;
