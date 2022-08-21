@@ -3,17 +3,28 @@ import React, { useEffect, useState } from 'react';
 const Allbikes = () => {
 
     const [bikes, setbikes] = useState([]);
+    const [page, setpage] = useState(1);
+
      // for getting all bikes with pagination 
      const getvehicle = async ()=>{
-        const data = await fetch(`http://localhost:3030/allvehicle?page=1`);
+        const data = await fetch(`http://localhost:3030/allvehicle?page=${page}`);
         const result = await (data.json());
         setbikes(result.rows);
-        console.log(result.rows);
+    }
+
+    const handlepage = (val) => {
+        if(page === 1 && val === -1){
+            setpage(page);
+        }
+        else{
+            setpage(page + val);
+        }
+        
     }
 
     useEffect(()=>{
         getvehicle();
-    },[])
+    },[page])
 
     return (
         <div>
@@ -22,8 +33,8 @@ const Allbikes = () => {
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Origin</th>
+                        <th>Milage</th>
+                        <th>Launchyear</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +54,10 @@ const Allbikes = () => {
                 }
                 </tbody>
             </table>
+            <div id="bikebuttons">
+                <button onClick= {()=>handlepage(-1)} id="pagechange">Pre</button>
+                <button onClick= {()=>handlepage(1)} id="pagechange">Next</button>
+            </div>
         </div>
     );
 };
