@@ -4,17 +4,18 @@ const Router = express.Router();
 const { Vehicle, Dealer} = require("../config/db");
 
 // route for post the vehicles data 
-Router.post('/addvehicle', (req, res) => {
+
+const postvehicle = (req, res) => {
     Vehicle.create(req.body).then(Vehicle => {
         res.send(Vehicle);
     }).catch(err => {
         res.send(err);
     })
-
-});
+}
 
 // route for get dealers data
-Router.get('/vehicle', (req, res) => {
+
+const getvehicle = (req, res) =>{
     Vehicle.findAll({
         include:[{
             model:Dealer,
@@ -27,10 +28,11 @@ Router.get('/vehicle', (req, res) => {
         res.send(err);
     }
     );
-});
+}
 
 // route for get vehicle by company id for getting vehicles of perticular company
-Router.get('/vehicle/:id', (req, res) => {
+
+const getvehiclebyid = (req,res) =>{
     Vehicle.findAll({
         where: {
             comp_id: req.params.id
@@ -42,10 +44,11 @@ Router.get('/vehicle/:id', (req, res) => {
         res.send(err);
     }
     );
-});
+}
+
 
 //route for get dealers data from vehicle table for that perticular vehicle
-Router.get('/dealer/:id', (req, res) => {
+const getdealerbyvehicleid = ()=>{
     Vehicle.findAll({
         where:{
             v_id : req.params.id
@@ -61,6 +64,6 @@ Router.get('/dealer/:id', (req, res) => {
         res.send(err);
     }
     );
-});
+}
  
-module.exports = Router;
+module.exports = {postvehicle, getvehicle, getvehiclebyid, getdealerbyvehicleid};
