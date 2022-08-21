@@ -1,20 +1,17 @@
-const express = require('express');
 
-const Router = express.Router();
 const {Dealer, Vehicle} = require("../config/db");
 
 // route for post the dealers data 
-Router.post('/adddealer', (req, res) => {
+const postdealer = (req, res) => {
     Dealer.create(req.body).then(Dealer => {
         res.send(Dealer);
     }).catch(err => {
         res.send(err);
     })
-
-});
+}
 
 //route for get dealers data
-Router.get('/dealer', (req, res) => {
+const getdealer = (req, res) => {
     Dealer.findAll({
         include:[{
             model:Vehicle,
@@ -27,10 +24,10 @@ Router.get('/dealer', (req, res) => {
         res.send(err);
     }
     );
-});
+}
 
 //route for get dealers data
-Router.get('/vehicles/:id', (req, res) => {
+const getdealerbyid = (req, res) =>{
     Dealer.findAll({
         where:{
             d_id : req.params.id
@@ -46,8 +43,8 @@ Router.get('/vehicles/:id', (req, res) => {
         res.send(err);
     }
     );
-});
+}
 
 
  
-module.exports = Router;
+module.exports = {postdealer, getdealer, getdealerbyid};

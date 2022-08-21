@@ -13,6 +13,8 @@ app.use(body_parser.urlencoded ({extended: false}));
 // import all routes here 
 const CompenyController = require("./routes/company.route");
 const compDetailController = require("./routes/compdetail.route");
+const dealerController = require("./routes/dealer.route");
+
 // all routes write here 
 // app.use('/', require("./controller/vehicle.controller"));
 // app.use('/', require("./controller/company.controller"));
@@ -20,6 +22,7 @@ app.use("/" , CompenyController)
 // app.use('/', require("./controller/compdetail.controller"));
 app.use("/", compDetailController)
 // app.use('/', require("./controller/dealer.controler"));
+app.use("/", dealerController);
 // app.use('/', require("./controller/deals.controller"));
 
 

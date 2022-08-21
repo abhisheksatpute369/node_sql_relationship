@@ -1,21 +1,18 @@
-const express = require('express');
 
-const Router = express.Router();
 const {Deals, Dealer} = require("../config/db");
 
 // route for post the deals data 
-Router.post('/adddeal', (req, res) => {
+
+const postdeal = (req, res) =>{
     Deals.create(req.body).then(Deals => {
         res.send(Deals);
     }).catch(err => {
         res.send(err);
     })
-
-});
+}
 
 //route for get dealers data
-Router.get('/deal', (req, res) => {
-    console.log("data gete")
+const getdeal = (req,res) =>{
     Deals.findAll({
  
     }).then(deal => {
@@ -25,6 +22,6 @@ Router.get('/deal', (req, res) => {
         res.send(err);
     }
     );
-});
+}
  
-module.exports = Router;
+module.exports = {postdeal,getdeal};

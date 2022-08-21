@@ -2,7 +2,7 @@
 const {Company  , Compdetails} = require("../config/db");
 
 // route for post the company data 
-const postcommdetails = () =>{
+const postcommdetails = (req, res) =>{
     Compdetails.create(req.body).then(Compdetails => {
         res.send(Compdetails);
     }).catch(err => {
