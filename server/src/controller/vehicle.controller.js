@@ -48,7 +48,7 @@ const getvehiclebyid = (req,res) =>{
 
 
 //route for get dealers data from vehicle table for that perticular vehicle
-const getdealerbyvehicleid = ()=>{
+const getdealerbyvehicleid = (req, res)=>{
     Vehicle.findAll({
         where:{
             v_id : req.params.id

@@ -18,15 +18,10 @@ const dealsController =require("./routes/deals.route");
 const vehicleController = require("./routes/vehicle.route");
 
 // all routes write here 
-// app.use('/', require("./controller/vehicle.controller"));
 app.use("/", vehicleController);
-// app.use('/', require("./controller/company.controller"));
 app.use("/" , CompenyController);
-// app.use('/', require("./controller/compdetail.controller"));
 app.use("/", compDetailController);
-// app.use('/', require("./controller/dealer.controler"));
 app.use("/", dealerController);
-// app.use('/', require("./controller/deals.controller"));
 app.use("/",dealsController);
 
 

@@ -8,5 +8,7 @@ const router = express.Router()
 
     router.get("/company/:id", companyController.getcompanybyid)
 
+   router.get("/companyp" , companyController.comapnypaginate)
+
 
 module.exports = router

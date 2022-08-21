@@ -43,5 +43,19 @@ const postcompany = (req, res) =>{
         res.send(err);
     })
 }
-module.exports = {postcompany, getallcompany, getcompanybyid};
+
+const comapnypaginate = (req, res) =>{
+    let limit = req.query.limit || 3;
+    let offset = limit * (req.query.page - 1)||0;
+    Company.findAndCountAll({
+        limit: limit,
+        offset: offset
+    }).then(data => {
+        res.send(data);
+    }).catch(err => {
+        res.send(err);
+    });
+
+}
+module.exports = {postcompany, getallcompany, getcompanybyid, comapnypaginate};
 
