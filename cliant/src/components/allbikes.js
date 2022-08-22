@@ -9,12 +9,16 @@ const Allbikes = () => {
      const getvehicle = async ()=>{
         const data = await fetch(`http://localhost:3030/allvehicle?page=${page}`);
         const result = await (data.json());
+
         setbikes(result.rows);
     }
 
     const handlepage = (val) => {
         if(page === 1 && val === -1){
             setpage(page);
+        }
+        else if(bikes.length === 0 && val === 1){
+            setpage(page - 1);
         }
         else{
             setpage(page + val);

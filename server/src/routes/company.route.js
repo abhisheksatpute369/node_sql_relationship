@@ -10,7 +10,7 @@ const router = express.Router()
 
    router.get("/companyp" , companyController.comapnypaginate) //these route for pagination
 
-//    router.get('/companyorderby', companyController.getallcomapanyorderby);
+    router.get('/companybyname', companyController.getsearchedcompany);// route for get comany by name
 
 
 module.exports = router

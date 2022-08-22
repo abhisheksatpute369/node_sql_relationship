@@ -5,6 +5,7 @@ import "../styles/company.css"
 const Company = () => {
 
     const [company, setcompany] = useState([]);
+    const [name, setname] = useState("");
     const Navigate = useNavigate();
 
       // for getting all company data 
@@ -52,6 +53,30 @@ const Company = () => {
 
     }
 
+    // function for handle comapny name input 
+    const handlechange = (e) =>{
+        const name = e.target.value;
+        setname(name);
+    }
+
+    const handlecompanysearch = async()=>{
+        if(name === "all"){
+            var result = await fetch(`http://localhost:3030/company`);
+            var res = await result.json();
+            setcompany(res);
+        }
+        else{
+            var result = await fetch(`http://localhost:3030/companybyname?name=${name}`);
+            var res = await result.json();
+            if(res[0] == null){
+                alert("company not found")
+            }else{
+                setcompany(res);
+            }
+        }
+                
+    }
+
     useEffect(()=>{
         getdata();
     },[]);
@@ -62,11 +87,18 @@ const Company = () => {
 
     return (
         <div>
-            <select id = "selectfilter" onChange={handlefilter}>
-                <option value="">--Filter--</option>
-                <option value="ASC">Name A-Z</option>
-                <option value ="DESC">Name Z-A</option>
-            </select>
+            <div id="companynav">
+                <div id="testing">
+                <input id="compname" placeholder='Search by Company name' onChange={handlechange}></input>
+                <button id="searchbtn" onClick={handlecompanysearch}>Search</button>
+                </div>
+                <select id = "selectfilter" onChange={handlefilter}>
+                    <option value="">--Filter--</option>
+                    <option value="ASC">Name A-Z</option>
+                    <option value ="DESC">Name Z-A</option>
+                </select>
+            </div>
+            
             <table>
                 <thead id="heading">
                     <tr>

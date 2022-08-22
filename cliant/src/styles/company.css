@@ -144,6 +144,7 @@ table{
     color: black;
     border-radius: 10px;
     font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     /* font-weight: 500; */
 }
 #bkbutton:hover{
@@ -173,12 +174,43 @@ table{
 }
 
 #selectfilter{
-    width: 8%;
-    height: 30px;
+    width: 12%;
+    height: 37px;
     border: none;
     font-size: 15px;
     background-color: aqua;
     color: black;
-    margin-left: 46%;
+}
+#testing{
+    display: flex;
+    width: 70%;
+}
+#companynav{
+    display: flex;
+    width: 60%;
+    margin: auto;
     margin-top: 20px;
+    justify-content: space-between;
+}
+#compname{
+    width: 60%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 20px;
+    text-align: center;
+    resize: none;
+    outline: none;
+}
+#searchbtn{
+    width: 12%;
+    height: 34px;
+    margin-left: 3%;
+    border: 1px solid black;
+    background-color: aqua;
+    color: black;
+}
+#searchbtn:hover{
+    background-color: white;
+    border-radius: 10px;
 }

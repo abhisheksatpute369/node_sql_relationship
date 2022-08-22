@@ -85,5 +85,20 @@ const comapnypaginate = (req, res) =>{
     });
 
 }
-module.exports = {postcompany, getallcompany, getcompanybyid, comapnypaginate};
+
+//get data by name search
+const getsearchedcompany = (req, res) => {
+    const name = req.query.name;
+    Company.findOne({
+        where : {comp_name : name}
+    }).then(Companys => {
+        res.send([Companys]);
+    }
+    ).catch(err => {
+        res.send(err);
+    }
+    );
+}
+
+module.exports = {postcompany, getallcompany, getcompanybyid, comapnypaginate, getsearchedcompany};
 
