@@ -16,19 +16,47 @@ const getcompanybyid = (req, res) => {
 
 //route for get company data
 
+// const getallcompany = (req, res) => {
+//     Company.findAll({
+//         //     include:[{
+//         //         model:Compdetails,
+//         //         attributes:['compdetail_id' , 'ceo_name','manager','headquarter','employee_num']
+//         //  }]
+//     }).then(Companys => {
+//         res.send(Companys);
+//     }
+//     ).catch(err => {
+//         res.send(err);
+//     }
+//     );
+// }
+
+// get all comapny data and for apply filter by company name 
 const getallcompany = (req, res) => {
-    Company.findAll({
-        //     include:[{
-        //         model:Compdetails,
-        //         attributes:['compdetail_id' , 'ceo_name','manager','headquarter','employee_num']
-        //  }]
-    }).then(Companys => {
-        res.send(Companys);
+    const orderby = req.query.order; 
+    if(orderby === undefined){  // if not get any order simply return data as database
+        Company.findAll({
+
+        }).then(Companys => {
+            res.send(Companys);
+        }
+        ).catch(err => {
+            res.send(err);
+        }
+        );
     }
-    ).catch(err => {
-        res.send(err);
+    else{
+        Company.findAll({
+            order: [["comp_name", orderby]], //if getting order return data in required manner
+        }).then(Companys => {
+            res.send(Companys);
+        }
+        ).catch(err => {
+            res.send(err);
+        }
+        );
     }
-    );
+    
 }
 
 //route for get perticular company data

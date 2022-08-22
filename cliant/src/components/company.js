@@ -9,10 +9,24 @@ const Company = () => {
 
       // for getting all company data 
       const getdata = async () =>{
-        var result = await fetch("http://localhost:3030/company");
+        var result = await fetch(`http://localhost:3030/company`);
         var res = await result.json();
         setcompany(res);
         
+    }
+
+    //for getting ascending data if selected ASC filter
+    const getascdata = async() => {
+        var result = await fetch(`http://localhost:3030/company?order=ASC`);
+        var res = await result.json();
+        setcompany(res);
+    }
+
+    // for getting descending data if selected DESC filter 
+    const getdescdata = async() => {
+        var result = await fetch(`http://localhost:3030/company?order=DESC`);
+        var res = await result.json();
+        setcompany(res);
     }
 
     const handleview = (id)=> {
@@ -23,12 +37,36 @@ const Company = () => {
         Navigate(`bikes/${id}`)
     }
 
+    // function for handle filter functionality 
+    const handlefilter = (e) => {
+       const order = e.target.value;
+       if(order === "ASC"){
+            getascdata();
+       }
+       else if(order === "DESC"){
+            getdescdata();
+       }
+       else{
+            getdata();
+       }
+
+    }
+
     useEffect(()=>{
         getdata();
     },[]);
 
+    // useEffect(()=>{
+    //     getfiltereddata();
+    // },[order]);
+
     return (
         <div>
+            <select id = "selectfilter" onChange={handlefilter}>
+                <option value="">--Filter--</option>
+                <option value="ASC">Name A-Z</option>
+                <option value ="DESC">Name Z-A</option>
+            </select>
             <table>
                 <thead id="heading">
                     <tr>
