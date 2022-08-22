@@ -66,12 +66,12 @@ const Company = () => {
             setcompany(res);
         }
         else{
-            var result = await fetch(`http://localhost:3030/companybyname?name=${name}`);
-            var res = await result.json();
-            if(res[0] == null){
+            var resultdata = await fetch(`http://localhost:3030/companybyname?name=${name}`);
+            var resdata = await resultdata.json();
+            if(resdata[0] == null){
                 alert("company not found")
             }else{
-                setcompany(res);
+                setcompany(resdata);
             }
         }
                 

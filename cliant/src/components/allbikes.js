@@ -4,6 +4,7 @@ const Allbikes = () => {
 
     const [bikes, setbikes] = useState([]);
     const [page, setpage] = useState(1);
+    const [name, setname] = useState("");
 
      // for getting all bikes with pagination 
      const getvehicle = async ()=>{
@@ -13,6 +14,7 @@ const Allbikes = () => {
         setbikes(result.rows);
     }
 
+    // logic for pre and next button for pagination 
     const handlepage = (val) => {
         if(page === 1 && val === -1){
             setpage(page);
@@ -26,12 +28,33 @@ const Allbikes = () => {
         
     }
 
+    const handlechange = (e) =>{
+        const name = e.target.value;
+        setname(name);
+    }
+
+    const handlebikesearch = async()=>{
+            var resultdata = await fetch(`http://localhost:3030/vehiclebyname?name=${name}`);
+            var resdata = await resultdata.json();
+            console.log(resdata)
+            if(resdata[0] == null){
+                alert("vehicle not found")
+            }else{
+                setbikes(resdata);
+            }
+                
+    }
+
     useEffect(()=>{
         getvehicle();
     },[page])
 
     return (
         <div>
+            <div id="bikenav">
+                <input id="bikename" placeholder='Search by Bike name' onChange={handlechange}></input>
+                <button id="searchbtn" onClick={handlebikesearch}>Search</button>
+            </div>
             <table>
                 <thead id="heading">
                     <tr>

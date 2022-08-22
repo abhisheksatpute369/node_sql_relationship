@@ -79,5 +79,19 @@ const getdealerbyvehicleid = (req, res)=>{
     }
     );
 }
+
+//get vehicle data by name search
+const getsearchedvehicle = (req, res) => {
+    const name = req.query.name;
+    Vehicle.findOne({
+        where : {v_name : name}
+    }).then(vehicle => {
+        res.send([vehicle]);
+    }
+    ).catch(err => {
+        res.send(err);
+    }
+    );
+}
  
-module.exports = {postvehicle, getvehicle,allvehicle, getvehiclebyid, getdealerbyvehicleid};//all vehicle for pagination
+module.exports = {postvehicle, getvehicle,allvehicle, getvehiclebyid, getdealerbyvehicleid, getsearchedvehicle};//all vehicle for pagination

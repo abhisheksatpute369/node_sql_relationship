@@ -12,5 +12,7 @@ const router = express.Router()
 
     router.get("/dealer/:id", vehicleController.getdealerbyvehicleid)
 
+    router.get("/vehiclebyname", vehicleController.getsearchedvehicle)
+
 
 module.exports = router
