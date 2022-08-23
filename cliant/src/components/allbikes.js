@@ -5,6 +5,7 @@ const Allbikes = () => {
     const [bikes, setbikes] = useState([]);
     const [page, setpage] = useState(1);
     const [name, setname] = useState("");
+    const [vehicle, setvehicle] = useState([]);
 
      // for getting all bikes with pagination 
      const getvehicle = async ()=>{
@@ -36,13 +37,20 @@ const Allbikes = () => {
     const handlebikesearch = async()=>{
             var resultdata = await fetch(`http://localhost:3030/vehiclebyname?name=${name}`);
             var resdata = await resultdata.json();
-            console.log(resdata)
             if(resdata[0] == null){
                 alert("vehicle not found")
             }else{
-                setbikes(resdata);
+                setvehicle(resdata);
+                document.getElementById("singlevdata").style.visibility = "visible";
+                document.getElementById("canclebtn").style.visibility = "visible";
             }
+
                 
+    }
+
+    const handlecancle = () =>{
+        document.getElementById("singlevdata").style.visibility = "hidden";
+            document.getElementById("canclebtn").style.visibility = "hidden"
     }
 
     useEffect(()=>{
@@ -85,6 +93,22 @@ const Allbikes = () => {
                 <button onClick= {()=>handlepage(-1)} id="pagechange">Pre</button>
                 <button onClick= {()=>handlepage(1)} id="pagechange">Next</button>
             </div>
+
+            <div id="singlevdata">
+                <div className='singledatav'>
+                    <p className='ttl'>Name</p>
+                    <p className='ttldata'>{vehicle[0]?.v_name}</p>
+                </div>
+                <div className='singledatav'>
+                    <p className='ttl'>Milage</p>
+                    <p  className='ttldata'>{vehicle[0]?.v_milage} km/ltr</p>
+                </div>
+                <div className='singledatav'>
+                    <p className='ttl'>Launchyear</p>
+                    <p className='ttldata'>{vehicle[0]?.v_launchyear}</p>
+                </div>
+            </div>
+            <button id="canclebtn" onClick={handlecancle}>Cancle</button>
         </div>
     );
 };
